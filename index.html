@@ -2,240 +2,95 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b12">
-<title>SHARK IA — Studio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07090f">
+<title>SHARK IA — Creative Studio</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-:root{
- --bg:#080b12;--surface:#0e1420;--surface2:#121b2a;--surface3:#182437;
- --line:rgba(159,181,215,.12);--text:#f3f6fc;--muted:#8d9ab0;
- --blue:#4388ff;--cyan:#43d9e8;--purple:#8b6cff;--green:#39d6a0;
- --radius:20px;--shadow:0 22px 70px rgba(0,0,0,.28)
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:radial-gradient(ellipse at 72% -15%,rgba(50,104,211,.17),transparent 34%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
-button,input,textarea,select{font:inherit}button{cursor:pointer}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#07090f;--panel:#0d111b;--panel2:#111827;--line:#202a3a;--muted:#8491a6;--white:#f5f7fb;--blue:#4c8dff;--cyan:#50d9e9;--violet:#9b7bff;--green:#4adead}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}
 .app{min-height:100vh;display:flex}
-.sidebar{width:258px;position:fixed;inset:0 auto 0 0;background:rgba(10,15,25,.94);border-right:1px solid var(--line);padding:25px 17px;display:flex;flex-direction:column;z-index:20;backdrop-filter:blur(18px)}
-.brand{display:flex;align-items:center;gap:12px;padding:2px 9px 30px}
-.brand-mark{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#438cff,#6d62ff);box-shadow:0 8px 25px #397bff42;font-size:23px}
-.brand-name{font:800 19px Manrope;letter-spacing:1.2px}.brand-sub{font-size:9px;letter-spacing:2px;color:#7d9dcf;margin-top:3px}
-.nav-caption{font-size:10px;letter-spacing:1.7px;font-weight:700;color:#64738c;padding:17px 11px 9px}
-.nav-btn{border:1px solid transparent;background:transparent;color:#9aa8bd;width:100%;display:flex;align-items:center;gap:13px;padding:12px 13px;border-radius:12px;text-align:left;margin:3px 0;font-size:13px;font-weight:600;transition:.2s}
-.nav-btn .ico{width:21px;text-align:center;font-size:17px}
-.nav-btn:hover{background:#151f30;color:#fff}
-.nav-btn.active{color:#fff;background:linear-gradient(100deg,rgba(61,126,255,.2),rgba(61,126,255,.06));border-color:rgba(72,137,255,.2);box-shadow:inset 3px 0 #4388ff}
-.sidebar-spacer{flex:1}
-.plan-card{padding:15px;border-radius:16px;border:1px solid rgba(85,139,255,.2);background:linear-gradient(145deg,rgba(44,91,173,.18),rgba(21,30,47,.75));margin:15px 2px}
-.plan-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700}
-.plan-pill{font-size:9px;color:#8ec1ff;background:#2c5a9b55;padding:5px 7px;border-radius:20px}
-.plan-card p{font-size:11px;color:var(--muted);line-height:1.5;margin:9px 0 12px}
-.plan-link{border:0;background:none;color:#8ebcff;font-size:11px;font-weight:700}
-.sidebar-foot{font-size:10px;color:#56647a;padding:14px 8px 0}
-.main{margin-left:258px;width:calc(100% - 258px);min-width:0}
-.topbar{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 38px;background:rgba(8,11,18,.65);backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}
-.top-left{display:flex;align-items:center;gap:13px}.page-title{font:700 14px Manrope;color:#dfe7f5}
-.breadcrumb{font-size:11px;color:#718099;margin-top:3px}
-.top-actions{display:flex;align-items:center;gap:12px}
-.online{font-size:11px;color:#8da0b9;display:flex;align-items:center;gap:7px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #39d6a0}
-.avatar{width:36px;height:36px;border:1px solid var(--line);border-radius:12px;background:#18263b;color:#9fc4ff;font-weight:800}
-.mobile-menu{display:none;border:1px solid var(--line);background:#111a29;color:white;border-radius:10px;padding:8px 10px}
-.content{max-width:1240px;margin:auto;padding:34px 38px 50px}
-.page{animation:appear .28s ease}@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-.hidden{display:none!important}
-.hero{position:relative;overflow:hidden;border:1px solid rgba(91,143,255,.2);border-radius:25px;padding:36px 38px;background:linear-gradient(112deg,#111e34 0%,#11192a 52%,#191a35 100%);box-shadow:var(--shadow);margin-bottom:25px}
-.hero:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:7%;top:-220px;background:#4388ff35;filter:blur(30px)}
-.hero:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:13%;bottom:-155px;background:#866cff36;filter:blur(20px)}
-.hero-content{position:relative;z-index:1;max-width:650px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #4c83d54d;background:#28518b35;color:#a9ceff;border-radius:30px;padding:7px 11px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px}
-.hero h1{font:800 clamp(27px,4vw,42px)/1.15 Manrope;letter-spacing:-1.5px;margin-bottom:13px}
-.hero h1 span{background:linear-gradient(90deg,#78b7ff,#9a8aff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{max-width:560px;color:#a8b7cd;font-size:14px;line-height:1.75}
-.hero-actions{display:flex;gap:11px;margin-top:23px;flex-wrap:wrap}
-.btn-primary,.btn-ghost{border-radius:11px;padding:12px 17px;font-size:12px;font-weight:700;transition:.2s}
-.btn-primary{border:0;color:#fff;background:linear-gradient(105deg,#397df4,#685ff0);box-shadow:0 8px 24px #397bff35}
-.btn-primary:hover{filter:brightness(1.12);transform:translateY(-1px)}
-.btn-ghost{border:1px solid #ffffff24;background:#ffffff09;color:#dce7f8}
-.section-head{display:flex;align-items:end;justify-content:space-between;margin:28px 0 15px;gap:15px}
-.section-head h2{font:700 17px Manrope}.section-head p{font-size:11px;color:var(--muted);margin-top:5px}
-.text-link{border:0;background:none;color:#8ebcff;font-size:11px;font-weight:700}
-.tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.tool-card{position:relative;overflow:hidden;text-align:left;padding:21px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#111a29,#0e1420);transition:.22s;min-height:190px}
-.tool-card:hover{transform:translateY(-3px);border-color:#477fe45c;box-shadow:0 16px 40px #0005}
-.tool-card:after{content:"";position:absolute;width:150px;height:150px;right:-65px;top:-65px;border-radius:50%;background:var(--glow);filter:blur(4px);opacity:.14}
-.tool-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;font-size:20px;background:var(--iconbg);border:1px solid var(--iconline);margin-bottom:19px}
-.tool-card h3{font:700 15px Manrope;margin-bottom:8px}.tool-card p{font-size:12px;color:var(--muted);line-height:1.6;max-width:340px}
-.card-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px;color:#8dbaff;font-size:11px;font-weight:700}
-.arrow{font-size:18px}
-.quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
-.quick-card{padding:16px;border:1px solid var(--line);background:#0e1521;border-radius:15px}
-.quick-card span{font-size:10px;color:var(--muted)}.quick-card strong{display:block;font:700 20px Manrope;margin-top:7px}.quick-card small{display:block;color:#6f8099;font-size:10px;margin-top:5px}
-.panel{border:1px solid var(--line);border-radius:19px;background:linear-gradient(145deg,#101826,#0d131e);padding:24px;box-shadow:0 14px 45px #0002}
-.panel-head{margin-bottom:22px}.panel-head h3{font:700 16px Manrope}.panel-head p{color:var(--muted);font-size:12px;margin-top:6px;line-height:1.5}
-.field{margin-bottom:17px}.field label{display:block;color:#c4cede;font-size:11px;font-weight:700;margin-bottom:8px}
-.field input,.field textarea,.field select{width:100%;border:1px solid #26354b;background:#0a111c;color:#f2f6ff;border-radius:10px;padding:12px 13px;outline:none;font-size:12px;transition:.2s}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:#4a8cff;box-shadow:0 0 0 3px #4388ff18}
-.field textarea{min-height:112px;resize:vertical;line-height:1.6}
-.field select{appearance:auto}.field input::placeholder,.field textarea::placeholder{color:#59677c}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}
-.upload{min-height:150px;border:1px dashed #3b506e;border-radius:13px;background:#0b1421;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;color:#8293ad;cursor:pointer;overflow:hidden}
-.upload strong{display:block;color:#dbe7f9;font-size:12px;margin:8px 0 4px}.upload small{font-size:10px}.upload img{max-width:100%;max-height:210px;border-radius:9px}
-.primary{width:100%;border:0;border-radius:11px;padding:14px;background:linear-gradient(105deg,#397df4,#6b60ef);color:white;font-size:11px;font-weight:800;letter-spacing:.5px;box-shadow:0 9px 24px #397bff25}
-.result{display:none;margin-top:20px;border:1px solid #315b91;background:#0a1524;border-radius:13px;padding:18px}
-.result h4{font:700 13px Manrope;color:#91bdff;margin-bottom:12px}.result pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#d4deec;font:12px/1.75 'DM Sans',sans-serif}
-.secondary{margin-top:14px;border:1px solid #334b6c;background:#15243a;color:#d7e6ff;border-radius:9px;padding:10px 14px;font-size:11px;font-weight:700}
-.empty{padding:35px;text-align:center;border:1px dashed #2a3b53;border-radius:14px;color:var(--muted);font-size:12px;line-height:1.7}
-.empty b{display:block;color:#dce6f5;font-size:13px;margin-bottom:5px}
-.footer{text-align:center;color:#526078;font-size:10px;padding:22px}
-@media(max-width:900px){.sidebar{width:230px}.main{margin-left:230px;width:calc(100% - 230px)}.content{padding:27px 23px}.topbar{padding:0 23px}}
-@media(max-width:700px){
- .sidebar{display:none;width:270px;box-shadow:20px 0 60px #0009}.sidebar.open{display:flex}
- .main{margin-left:0;width:100%}.topbar{height:64px;padding:0 16px}.mobile-menu{display:block}.page-title{font-size:13px}
- .online{font-size:0}.online .dot{width:8px;height:8px}.content{padding:20px 15px 35px}
- .hero{padding:25px 21px;border-radius:19px}.hero h1{font-size:29px}.hero p{font-size:12px}
- .tool-grid{grid-template-columns:1fr}.tool-card{min-height:165px;padding:18px}
- .quick-grid{grid-template-columns:1fr 1fr}.quick-card:last-child{grid-column:span 2}
- .form-grid{grid-template-columns:1fr}.panel{padding:18px}
- .section-head{margin-top:24px}.brand{padding-bottom:23px}
-}
+.sidebar{width:248px;position:fixed;inset:0 auto 0 0;background:#090d15;border-right:1px solid #1b2432;padding:25px 17px;display:flex;flex-direction:column;z-index:20}
+.logo{display:flex;align-items:center;gap:11px;padding:0 9px 38px}.logo-symbol{height:39px;width:39px;border-radius:12px;background:linear-gradient(140deg,#4b9cff,#755cff);display:grid;place-items:center;font-size:21px;box-shadow:0 0 28px #4a8dff42}.logo strong{font:700 18px 'Space Grotesk';letter-spacing:1.2px}.logo small{display:block;font-size:8px;letter-spacing:2.1px;color:#8298ba;margin-top:3px}
+.nav-label{font-size:9px;letter-spacing:2px;font-weight:800;color:#526078;padding:0 12px 12px}.nav{display:grid;gap:5px}.nav button{height:45px;border:1px solid transparent;background:none;color:#8996aa;text-align:left;padding:0 13px;border-radius:10px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:13px}.nav button span{font-size:17px;width:18px;text-align:center}.nav button:hover{background:#121b2a;color:#fff}.nav button.active{background:linear-gradient(90deg,#1a3153,#111b2b);border-color:#29466e;color:#fff;box-shadow:inset 2px 0 #5a9aff}
+.side-bottom{margin-top:auto}.upgrade{padding:16px;border:1px solid #273b5a;border-radius:14px;background:radial-gradient(circle at 100% 0,#273d65 0,transparent 65%),#101a2a}.upgrade .tag{font-size:8px;letter-spacing:1.6px;color:#9cc5ff;font-weight:800}.upgrade h3{font:600 14px 'Space Grotesk';margin:10px 0 5px}.upgrade p{font-size:10px;line-height:1.6;color:#9aa9bf;margin:0 0 13px}.upgrade button{border:0;background:#e8f1ff;color:#14233b;border-radius:7px;padding:9px 11px;font-size:10px;font-weight:800;width:100%}.copyright{font-size:9px;color:#4e5a6d;text-align:center;padding:19px 0 0}
+.main{margin-left:248px;width:calc(100% - 248px);min-width:0}.top{height:70px;border-bottom:1px solid #1b2432;display:flex;align-items:center;justify-content:space-between;padding:0 38px;background:#080b12}.top-title{font:600 12px 'Space Grotesk';color:#c5d0df}.top-right{display:flex;align-items:center;gap:17px}.status{font-size:10px;color:#91a0b5;display:flex;align-items:center;gap:7px}.status i{width:6px;height:6px;border-radius:50%;background:#42d9a2;box-shadow:0 0 9px #42d9a2}.profile{height:34px;width:34px;border:1px solid #30415a;border-radius:50%;background:#182840;color:#a9ceff;font-weight:800}.mobile{display:none}
+.wrap{max-width:1260px;margin:auto;padding:33px 38px 55px}.view{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.hide{display:none!important}
+.welcome{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px;gap:18px}.kicker{color:#8ab8ff;font-size:9px;letter-spacing:2.2px;font-weight:800;margin-bottom:12px}.welcome h1{font:700 clamp(27px,3.4vw,40px)/1.12 'Space Grotesk';letter-spacing:-1.5px;margin:0}.welcome h1 em{font-style:normal;color:#75aaff}.welcome p{font-size:12px;color:#8997ab;line-height:1.7;margin:12px 0 0;max-width:560px}.welcome .date{font-size:10px;color:#69778d;white-space:nowrap}
+.feature{display:grid;grid-template-columns:1.15fr .85fr;min-height:260px;border:1px solid #263a58;border-radius:18px;overflow:hidden;background:linear-gradient(110deg,#101b2c,#101725 62%,#17182b);position:relative}
+.feature-copy{padding:30px 33px;position:relative;z-index:1}.feature-label{display:inline-flex;align-items:center;gap:7px;color:#a9ceff;font-size:9px;letter-spacing:1.5px;font-weight:800;border:1px solid #42649a70;background:#1b355355;border-radius:30px;padding:7px 10px}.feature h2{font:700 clamp(22px,3vw,33px)/1.15 'Space Grotesk';letter-spacing:-1px;margin:19px 0 10px}.feature p{color:#9aa9be;font-size:11px;line-height:1.7;max-width:440px}.feature button{margin-top:18px;border:0;border-radius:8px;padding:12px 16px;color:#fff;background:linear-gradient(100deg,#3987f7,#7767f6);font-size:10px;font-weight:800;box-shadow:0 7px 23px #4a7dff35}.feature-art{position:relative;min-height:220px;overflow:hidden;background:radial-gradient(ellipse at 60% 45%,#30599a55,transparent 55%)}.orb{position:absolute;width:205px;height:205px;border-radius:50%;border:1px solid #73aaff55;right:22%;top:28px;box-shadow:inset 0 0 45px #438aff22,0 0 70px #438aff22}.orb:before,.orb:after{content:"";position:absolute;inset:20px;border:1px solid #76aaff30;border-radius:50%;transform:rotateX(65deg) rotateZ(30deg)}.orb:after{transform:rotateX(65deg) rotateZ(-35deg)}.shark-mark{position:absolute;inset:0;display:grid;place-items:center;font-size:92px;filter:drop-shadow(0 14px 22px #0009);opacity:.9}.spark{position:absolute;color:#9dc8ff;font-size:15px}.spark.a{top:30px;right:25%}.spark.b{bottom:34px;left:15%}.spark.c{top:53%;right:8%;font-size:10px}
+.section{display:flex;justify-content:space-between;align-items:end;margin:30px 0 14px}.section h2{font:600 16px 'Space Grotesk';margin:0}.section p{font-size:10px;color:#75839a;margin:5px 0 0}.section a{font-size:10px;color:#8dbbff;text-decoration:none;font-weight:700}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.tool{border:1px solid #202b3b;background:#0c121d;border-radius:14px;padding:19px;display:flex;gap:15px;align-items:flex-start;text-align:left;color:white;transition:.2s}.tool:hover{border-color:#426da7;transform:translateY(-2px);background:#101a29}.tool-icon{height:42px;width:42px;flex:0 0 42px;border-radius:11px;display:grid;place-items:center;font-size:19px;background:#172c49;border:1px solid #29466c}.tool:nth-child(2) .tool-icon{background:#292143;border-color:#4b3b79}.tool h3{font:600 13px 'Space Grotesk';margin:2px 0 6px}.tool p{font-size:10px;color:#8492a7;line-height:1.6;margin:0}.tool .go{margin-left:auto;color:#83b7ff;font-size:17px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}.metric{border:1px solid #1d2939;background:#0b111b;border-radius:12px;padding:14px 16px}.metric label{display:block;font-size:8px;letter-spacing:1.5px;color:#66758b;font-weight:800}.metric strong{display:block;font:600 17px 'Space Grotesk';margin-top:7px}.metric small{display:block;font-size:9px;color:#6f8098;margin-top:4px}
+.page-head{margin:5px 0 22px}.page-head h1{font:700 27px 'Space Grotesk';letter-spacing:-.7px;margin:0}.page-head p{font-size:11px;color:#8997ab;margin-top:7px}
+.create-layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px;align-items:start}.create-panel,.side-panel{border:1px solid #202c3e;background:#0c121d;border-radius:15px;padding:22px}.panel-title{font:600 14px 'Space Grotesk';margin:0 0 6px}.panel-sub{font-size:10px;color:#8290a5;line-height:1.6;margin:0 0 20px}
+.label{font-size:9px;letter-spacing:1.3px;font-weight:800;color:#b9c6d8;display:block;margin-bottom:9px}.name-input{width:100%;height:46px;background:#080e17;border:1px solid #27364a;border-radius:9px;padding:0 13px;color:#fff;outline:none;font-size:12px}.name-input:focus{border-color:#5597ff;box-shadow:0 0 0 3px #4a8dff19}.name-input::placeholder{color:#526176}
+.drop{height:235px;border:1px dashed #405573;border-radius:12px;background:linear-gradient(145deg,#0d1928,#0a111b);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;position:relative;cursor:pointer;transition:.2s}.drop:hover{border-color:#6aa4ff;background:#101d30}.drop-inner{padding:20px}.upload-icon{height:48px;width:48px;margin:0 auto 13px;border-radius:14px;background:#1a3455;color:#9bc5ff;display:grid;place-items:center;font-size:22px}.drop strong{display:block;font-size:12px;color:#e6edf8}.drop small{display:block;font-size:9px;color:#7889a1;margin-top:7px}.drop img{width:100%;height:100%;object-fit:contain;background:#080d15;padding:7px}.drop .change{position:absolute;bottom:12px;right:12px;background:#0b1421d9;border:1px solid #526a8b;border-radius:7px;padding:7px 10px;color:#e9f1ff;font-size:9px}
+.generate{width:100%;height:47px;border:0;border-radius:9px;color:#fff;font-size:10px;font-weight:800;letter-spacing:1px;background:linear-gradient(100deg,#3e8bf8,#785fff);box-shadow:0 8px 24px #477eff2a;transition:.2s}.generate:hover{filter:brightness(1.1);transform:translateY(-1px)}.generate:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.side-panel{padding:19px}.side-panel h3{font:600 12px 'Space Grotesk';margin:0 0 15px}.step{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid #1c2736}.step:last-child{border:0}.step-num{height:22px;width:22px;border-radius:7px;background:#1a2e49;color:#9cc7ff;display:grid;place-items:center;font-size:9px;font-weight:800;flex:0 0 22px}.step b{font-size:10px;display:block;margin:1px 0 4px}.step span{font-size:9px;color:#8290a5;line-height:1.5;display:block}
+.ai-note{margin-top:15px;padding:13px;border:1px solid #273c5b;border-radius:10px;background:#101d2e;color:#9eabc0;font-size:9px;line-height:1.65}.ai-note b{color:#b9d6ff}
+.output{display:none;margin-top:15px;padding:16px;border:1px solid #315d91;border-radius:11px;background:#0b1828}.output h4{font:600 12px 'Space Grotesk';color:#a9ceff;margin:0 0 10px}.output pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#d6e0ed;font:10px/1.7 Inter}.copy{margin-top:12px;border:1px solid #35547b;border-radius:7px;padding:8px 11px;background:#162943;color:#dceaff;font-size:9px;font-weight:700}
+.empty{padding:34px 20px;text-align:center;border:1px dashed #2b3b52;border-radius:12px;color:#8290a5;font-size:10px;line-height:1.7}.empty b{display:block;color:#e4ebf5;font-size:12px;margin-bottom:6px}
+@media(max-width:900px){.create-layout{grid-template-columns:1fr 260px}.wrap{padding:28px 23px}.top{padding:0 23px}}
+@media(max-width:700px){.sidebar{display:none;width:260px;box-shadow:20px 0 50px #000a}.sidebar.open{display:flex}.main{margin:0;width:100%}.top{height:60px;padding:0 15px}.mobile{display:block;border:1px solid #27364a;background:#111a28;color:#fff;border-radius:8px;padding:7px 10px;margin-right:10px}.top-left{display:flex;align-items:center}.top-right{gap:10px}.status{font-size:0}.status i{width:7px;height:7px}.wrap{padding:22px 14px 40px}.welcome{display:block}.welcome .date{display:none}.welcome h1{font-size:29px}.feature{grid-template-columns:1fr;min-height:0}.feature-copy{padding:24px 21px}.feature-art{min-height:115px}.orb{width:125px;height:125px;top:-7px;right:32%}.shark-mark{font-size:57px}.tools{grid-template-columns:1fr}.metrics{gap:7px}.metric{padding:12px 10px}.metric strong{font-size:15px}.create-layout{grid-template-columns:1fr}.create-panel{padding:17px}.side-panel{padding:16px}.drop{height:205px}.page-head h1{font-size:24px}}
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar" id="sidebar">
- <div class="brand"><div class="brand-mark">🦈</div><div><div class="brand-name">SHARK IA</div><div class="brand-sub">AI CREATIVE STUDIO</div></div></div>
- <div class="nav-caption">WORKSPACE</div>
- <button class="nav-btn active" data-page="home"><span class="ico">⌂</span> Visão geral</button>
- <button class="nav-btn" data-page="video"><span class="ico">✦</span> Gerador de vídeos</button>
- <button class="nav-btn" data-page="ads"><span class="ico">▣</span> Criador de anúncios</button>
- <div class="nav-caption">BIBLIOTECA</div>
- <button class="nav-btn" data-page="history"><span class="ico">▤</span> Meus projetos</button>
- <button class="nav-btn" data-page="account"><span class="ico">◉</span> Minha conta</button>
- <div class="sidebar-spacer"></div>
- <div class="plan-card"><div class="plan-top"><span>Seu espaço criativo</span><span class="plan-pill">BETA</span></div><p>Suas ferramentas de criação em um só lugar. Novos recursos em breve.</p><button class="plan-link" onclick="showPage('account')">Ver minha conta →</button></div>
- <div class="sidebar-foot">SHARK IA © 2026 · Feito para criar.</div>
+ <div class="logo"><div class="logo-symbol">🦈</div><div><strong>SHARK IA</strong><small>CREATIVE STUDIO</small></div></div>
+ <div class="nav-label">MENU PRINCIPAL</div>
+ <nav class="nav">
+  <button class="active" data-view="home"><span>⌂</span> Visão geral</button>
+  <button data-view="video"><span>✧</span> Criar vídeo</button>
+  <button data-view="ads"><span>▧</span> Criar anúncio</button>
+  <button data-view="projects"><span>▤</span> Meus projetos</button>
+  <button data-view="account"><span>◉</span> Minha conta</button>
+ </nav>
+ <div class="side-bottom"><div class="upgrade"><div class="tag">SHARK IA STUDIO</div><h3>Seu próximo conteúdo começa aqui.</h3><p>Um espaço criativo para transformar produtos em conteúdo.</p><button onclick="go('video')">CRIAR AGORA ↗</button></div><div class="copyright">SHARK IA © 2026</div></div>
 </aside>
 <main class="main">
-<header class="topbar">
- <div class="top-left"><button class="mobile-menu" onclick="toggleMenu()">☰</button><div><div class="page-title" id="pageTitle">Visão geral</div><div class="breadcrumb">Workspace / <span id="crumb">Início</span></div></div></div>
- <div class="top-actions"><div class="online"><span class="dot"></span> Plataforma online</div><button class="avatar" onclick="showPage('account')">W</button></div>
-</header>
-<div class="content">
-<section id="home" class="page">
- <div class="hero"><div class="hero-content"><div class="eyebrow"><span>✦</span> SEU ESTÚDIO CRIATIVO COM IA</div><h1>Ideias incríveis.<br><span>Conteúdo extraordinário.</span></h1><p>Crie conceitos para vídeos e anúncios em um ambiente simples, rápido e pensado para transformar suas ideias em conteúdo.</p><div class="hero-actions"><button class="btn-primary" onclick="showPage('video')">✦ Começar a criar</button><button class="btn-ghost" onclick="showPage('ads')">Explorar ferramentas</button></div></div></div>
- <div class="quick-grid"><div class="quick-card"><span>FERRAMENTAS</span><strong>02</strong><small>Disponíveis nesta versão</small></div><div class="quick-card"><span>SEU WORKSPACE</span><strong>Ativo</strong><small>Ambiente de criação</small></div><div class="quick-card"><span>VERSÃO</span><strong>Beta</strong><small>Novidades em desenvolvimento</small></div></div>
- <div class="section-head"><div><h2>Explore suas ferramentas</h2><p>Escolha por onde deseja começar.</p></div></div>
- <div class="tool-grid">
-  <button class="tool-card" onclick="showPage('video')" style="--glow:#398aff;--iconbg:#17345c;--iconline:#315b8c"><div class="tool-icon">🎬</div><h3>Gerador de vídeos</h3><p>Prepare conceitos e prompts para vídeos de produtos, campanhas e redes sociais.</p><div class="card-bottom"><span>ABRIR FERRAMENTA</span><span class="arrow">↗</span></div></button>
-  <button class="tool-card" onclick="showPage('ads')" style="--glow:#9570ff;--iconbg:#30254f;--iconline:#59458a"><div class="tool-icon">📣</div><h3>Criador de anúncios</h3><p>Monte roteiros comerciais, chamadas e legendas para divulgar seus produtos.</p><div class="card-bottom"><span>ABRIR FERRAMENTA</span><span class="arrow">↗</span></div></button>
+ <header class="top"><div class="top-left"><button class="mobile" onclick="toggleMenu()">☰</button><div class="top-title" id="topTitle">Visão geral</div></div><div class="top-right"><div class="status"><i></i> SISTEMA ONLINE</div><button class="profile" onclick="go('account')">W</button></div></header>
+ <div class="wrap">
+ <section id="home" class="view">
+  <div class="welcome"><div><div class="kicker">BEM-VINDO AO SEU ESTÚDIO</div><h1>Crie. Inove. <em>Impressione.</em></h1><p>Transforme fotos de produtos em ideias de conteúdo com a SHARK IA. Tudo começa com uma imagem e uma ideia.</p></div><div class="date">SHARK IA · CREATIVE WORKSPACE</div></div>
+  <div class="feature"><div class="feature-copy"><div class="feature-label">✦ &nbsp; INTELIGÊNCIA CRIATIVA</div><h2>Seu produto merece<br>um vídeo extraordinário.</h2><p>Envie uma foto, informe o nome do produto e prepare sua criação. A experiência foi pensada para ser simples do começo ao fim.</p><button onclick="go('video')">COMEÇAR UMA CRIAÇÃO &nbsp; ↗</button></div><div class="feature-art"><div class="orb"></div><div class="shark-mark">🦈</div><span class="spark a">✦</span><span class="spark b">✧</span><span class="spark c">✦</span></div></div>
+  <div class="section"><div><h2>Suas ferramentas</h2><p>Escolha o tipo de conteúdo que deseja criar.</p></div><a href="#" onclick="go('video');return false">VER TODAS ↗</a></div>
+  <div class="tools"><button class="tool" onclick="go('video')"><div class="tool-icon">🎬</div><div><h3>Gerador de vídeos</h3><p>Crie conceitos de vídeos promocionais a partir da foto e do nome do produto.</p></div><span class="go">↗</span></button><button class="tool" onclick="go('ads')"><div class="tool-icon">✳</div><div><h3>Criador de anúncios</h3><p>Prepare roteiros e textos comerciais para apresentar seus produtos.</p></div><span class="go">↗</span></button></div>
+  <div class="metrics"><div class="metric"><label>FERRAMENTAS</label><strong>02</strong><small>Área criativa</small></div><div class="metric"><label>WORKSPACE</label><strong>Ativo</strong><small>Pronto para começar</small></div><div class="metric"><label>PLATAFORMA</label><strong>Beta</strong><small>Em evolução</small></div></div>
+ </section>
+ <section id="video" class="view hide">
+  <div class="page-head"><div class="kicker">SHARK IA / VIDEO STUDIO</div><h1>Criar novo vídeo</h1><p>Envie a foto do produto e informe o nome. A descrição será preparada automaticamente pela IA quando conectarmos o motor de inteligência.</p></div>
+  <div class="create-layout">
+   <div class="create-panel">
+    <h2 class="panel-title">Detalhes da criação</h2><p class="panel-sub">Só precisamos de duas informações para começar.</p>
+    <label class="label" for="productName">NOME DO PRODUTO</label><input class="name-input" id="productName" placeholder="Ex.: Perfume importado, fone bluetooth...">
+    <div style="height:21px"></div>
+    <label class="label">FOTO DO PRODUTO</label>
+    <label class="drop" for="productImage" id="drop"><div class="drop-inner"><div class="upload-icon">↑</div><strong>Arraste sua foto ou toque para enviar</strong><small>PNG, JPG ou WEBP · imagem nítida recomendada</small></div></label>
+    <input type="file" id="productImage" accept="image/png,image/jpeg,image/webp" hidden>
+    <div style="height:18px"></div>
+    <button class="generate" id="generateBtn" onclick="createPrompt()">✦ &nbsp; GERAR MEU VÍDEO</button>
+    <div class="output" id="output"><h4>✦ Briefing automático preparado</h4><pre id="prompt"></pre><button class="copy" onclick="copyPrompt()">COPIAR BRIEFING</button></div>
+   </div>
+   <aside class="side-panel"><h3>Como funciona</h3><div class="step"><div class="step-num">01</div><div><b>Envie uma foto</b><span>Escolha uma imagem clara do produto na galeria do celular.</span></div></div><div class="step"><div class="step-num">02</div><div><b>Informe o nome</b><span>Digite como o produto deve ser identificado.</span></div></div><div class="step"><div class="step-num">03</div><div><b>A IA prepara a criação</b><span>A descrição, o conceito e as cenas serão definidos automaticamente.</span></div></div><div class="ai-note"><b>✦ Automação inteligente</b><br>Você não precisa escrever descrição nem roteiro. A proposta é a SHARK IA analisar as informações e montar tudo para você. A análise real da imagem será ativada na integração com o serviço de IA.</div></aside>
+  </div>
+ </section>
+ <section id="ads" class="view hide"><div class="page-head"><div class="kicker">SHARK IA / AD STUDIO</div><h1>Criador de anúncios</h1><p>Prepare ideias comerciais para divulgar seus produtos.</p></div><div class="create-panel"><h2 class="panel-title">Novo anúncio</h2><p class="panel-sub">Informe o produto e deixe o sistema preparar uma estrutura inicial.</p><label class="label">NOME DO PRODUTO</label><input class="name-input" id="adName" placeholder="Nome do produto"><div style="height:18px"></div><label class="label">PREÇO (OPCIONAL)</label><input class="name-input" id="adPrice" placeholder="Ex.: R$ 59,90"><div style="height:20px"></div><button class="generate" onclick="makeAd()">✦ &nbsp; PREPARAR ANÚNCIO</button><div class="output" id="adOutput"><h4>✦ Estrutura do anúncio</h4><pre id="adText"></pre></div></div></section>
+ <section id="projects" class="view hide"><div class="page-head"><div class="kicker">SUA BIBLIOTECA</div><h1>Meus projetos</h1><p>Seus conteúdos e criações em um só lugar.</p></div><div class="empty"><b>Nenhum projeto por aqui ainda</b>Assim que o histórico for conectado à sua conta, suas criações aparecerão nesta área.</div></section>
+ <section id="account" class="view hide"><div class="page-head"><div class="kicker">SEU PERFIL</div><h1>Minha conta</h1><p>Gerencie seu espaço de criação.</p></div><div class="empty"><b>Área de conta em preparação</b>O login e o cadastro serão ativados na integração com o Supabase.</div></section>
  </div>
-</section>
-<section id="video" class="page hidden">
- <div class="section-head"><div><h2>Gerador de vídeos</h2><p>Configure seu projeto e prepare um prompt detalhado para sua criação.</p></div></div>
- <div class="panel"><div class="panel-head"><h3>Detalhes do projeto</h3><p>Conte para a SHARK IA o que você deseja apresentar. Você pode enviar uma imagem como referência.</p></div>
- <div class="field"><label>IMAGEM DE REFERÊNCIA</label><label class="upload" for="productImage" id="uploadArea"><span>＋<strong>Adicionar imagem</strong><small>Toque para escolher uma foto da galeria</small></span></label><input type="file" id="productImage" accept="image/*" hidden></div>
- <div class="field"><label>NOME DO PRODUTO OU TEMA</label><input id="productName" placeholder="Ex.: Fone bluetooth premium"></div>
- <div class="field"><label>DESCRIÇÃO E DETALHES</label><textarea id="productDescription" placeholder="Descreva o produto, seus diferenciais e o que deve aparecer no vídeo..."></textarea></div>
- <div class="form-grid">
- <div class="field"><label>DURAÇÃO</label><select id="duration"><option>15 segundos</option><option selected>20 segundos</option><option>30 segundos</option><option>60 segundos</option></select></div>
- <div class="field"><label>FORMATO</label><select id="format"><option selected>9:16 - Vertical</option><option>16:9 - Horizontal</option><option>1:1 - Quadrado</option></select></div>
- <div class="field"><label>ESTILO VISUAL</label><select id="style"><option>Viral / TikTok</option><option>Cinematográfico</option><option>Demonstração realista</option><option>Publicidade profissional</option></select></div>
- <div class="field"><label>NARRAÇÃO</label><select id="voice"><option>Masculina brasileira</option><option>Feminina brasileira</option><option>Sem narração</option></select></div>
- </div><button class="primary" onclick="generateVideoPrompt()">✦ PREPARAR PROMPT DO VÍDEO</button>
- <div class="result" id="videoResult"><h4>✦ Seu prompt está pronto</h4><pre id="videoPrompt"></pre><button class="secondary" onclick="copyResult('videoPrompt')">Copiar prompt</button></div>
- </div>
-</section>
-<section id="ads" class="page hidden">
- <div class="section-head"><div><h2>Criador de anúncios</h2><p>Crie uma comunicação mais atraente para apresentar e divulgar seus produtos.</p></div></div>
- <div class="panel"><div class="panel-head"><h3>Novo anúncio</h3><p>Preencha as informações abaixo para montar um roteiro comercial e uma legenda.</p></div>
- <div class="field"><label>NOME DO PRODUTO</label><input id="adName" placeholder="Digite o nome do produto"></div>
- <div class="form-grid"><div class="field"><label>PREÇO (OPCIONAL)</label><input id="adPrice" placeholder="Ex.: R$ 49,90"></div><div class="field"><label>PLATAFORMA</label><select id="adPlatform"><option>Shopee Vídeo</option><option>TikTok</option><option>Instagram Reels</option><option>YouTube Shorts</option></select></div></div>
- <div class="field"><label>PRINCIPAL BENEFÍCIO</label><textarea id="adBenefit" placeholder="Qual problema o produto resolve? O que faz ele se destacar?"></textarea></div>
- <button class="primary" onclick="generateAd()">✦ GERAR ROTEIRO DO ANÚNCIO</button>
- <div class="result" id="adResult"><h4>✦ Seu anúncio está pronto</h4><pre id="adText"></pre><button class="secondary" onclick="copyResult('adText')">Copiar anúncio</button></div>
- </div>
-</section>
-<section id="history" class="page hidden"><div class="section-head"><div><h2>Meus projetos</h2><p>Seu espaço para acompanhar os conteúdos preparados.</p></div></div><div class="panel"><div class="empty"><b>Seu espaço está pronto para receber projetos</b>O histórico permanente será ativado quando conectarmos sua conta e o banco de dados.</div></div></section>
-<section id="account" class="page hidden"><div class="section-head"><div><h2>Minha conta</h2><p>Configurações do seu perfil SHARK IA.</p></div></div><div class="panel"><div class="panel-head"><h3>Área do usuário</h3><p>Login, cadastro e perfil serão habilitados na próxima etapa de integração com Supabase.</p></div><div class="empty"><b>Conta de usuário em preparação</b>A autenticação ainda não está conectada nesta versão.</div></div></section>
-</div>
-<div class="footer">SHARK IA © 2026 — AI CREATIVE STUDIO</div>
 </main>
 </div>
 <script>
-function showPage(page){
- document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
- document.getElementById(page).classList.remove('hidden');
- document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
- const titles={home:['Visão geral','Início'],video:['Gerador de vídeos','Criação / Vídeos'],ads:['Criador de anúncios','Criação / Anúncios'],history:['Meus projetos','Biblioteca / Projetos'],account:['Minha conta','Perfil / Conta']};
- document.getElementById('pageTitle').textContent=titles[page][0];
- document.getElementById('crumb').textContent=titles[page][1];
- document.getElementById('sidebar').classList.remove('open');
- window.scrollTo({top:0,behavior:'smooth'});
-}
-document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function go(id){document.querySelectorAll('.view').forEach(x=>x.classList.add('hide'));document.getElementById(id).classList.remove('hide');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));let names={home:'Visão geral',video:'Criar vídeo',ads:'Criar anúncio',projects:'Meus projetos',account:'Minha conta'};document.getElementById('topTitle').textContent=names[id];document.getElementById('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
 function toggleMenu(){document.getElementById('sidebar').classList.toggle('open')}
-document.getElementById('productImage').addEventListener('change',function(e){
- const file=e.target.files[0];if(!file)return;
- if(!file.type.startsWith('image/')){alert('Escolha uma imagem válida.');return}
- const reader=new FileReader();reader.onload=function(event){document.getElementById('uploadArea').innerHTML='<img src="'+event.target.result+'" alt="Imagem de referência">'};reader.readAsDataURL(file);
-});
-function generateVideoPrompt(){
- const name=document.getElementById('productName').value.trim(),description=document.getElementById('productDescription').value.trim();
- if(!name){alert('Digite o nome do produto ou tema.');return}
- const prompt=`Crie um vídeo publicitário de ${document.getElementById('duration').value} para apresentar: ${name}.
-
-DESCRIÇÃO E REFERÊNCIAS:
-${description||'Apresente o tema de forma visualmente atraente, sem inventar características.'}
-
-ESTILO: ${document.getElementById('style').value}.
-FORMATO: ${document.getElementById('format').value}.
-NARRAÇÃO: ${document.getElementById('voice').value}.
-IDIOMA: Português brasileiro.
-
-DIREÇÃO CRIATIVA:
-- Preserve a aparência original do produto da imagem de referência.
-- Comece com uma cena visual que desperte curiosidade.
-- Mostre detalhes e uma demonstração coerente.
-- Utilize movimentos de câmera suaves e profissionais.
-- Crie cenas dinâmicas com iluminação bem trabalhada.
-- Não invente especificações, funções ou acessórios.
-- Termine com uma chamada clara para conhecer o produto.
-- Evite textos distorcidos dentro da imagem.
-
-Entregue um vídeo coeso, atraente e adequado para redes sociais.`;
- document.getElementById('videoPrompt').textContent=prompt;document.getElementById('videoResult').style.display='block';document.getElementById('videoResult').scrollIntoView({behavior:'smooth'});
-}
-function generateAd(){
- const name=document.getElementById('adName').value.trim(),price=document.getElementById('adPrice').value.trim(),benefit=document.getElementById('adBenefit').value.trim(),platform=document.getElementById('adPlatform').value;
- if(!name||!benefit){alert('Informe o nome e o principal benefício do produto.');return}
- const text=`ROTEIRO PARA ${platform.toUpperCase()}
-
-[ABERTURA]
-Você precisa conhecer isso!
-
-[APRESENTAÇÃO]
-Esse é o ${name}.
-
-[PRINCIPAL BENEFÍCIO]
-${benefit}
-
-${price?'[OFERTA]\\nConfira por '+price+'.':'[PREÇO]\\nConsulte o valor e as condições disponíveis.'}
-
-[CHAMADA PARA AÇÃO]
-Acesse e confira todos os detalhes. Não perca!
-
-LEGENDA
-Conheça o ${name}. ${benefit} ${price?'Disponível por '+price+'.':''} Confira agora!`;
- document.getElementById('adText').textContent=text;document.getElementById('adResult').style.display='block';document.getElementById('adResult').scrollIntoView({behavior:'smooth'});
-}
-function copyResult(id){
- const text=document.getElementById(id).textContent;
- if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(()=>alert('Copiado com sucesso!')).catch(()=>fallbackCopy(text))}
- else fallbackCopy(text);
-}
-function fallbackCopy(text){const area=document.createElement('textarea');area.value=text;document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();alert('Texto copiado!')}
+let selectedImage=null;
+document.getElementById('productImage').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;if(!f.type.startsWith('image/')){alert('Selecione uma imagem válida.');return}selectedImage=f;let r=new FileReader();r.onload=ev=>{document.getElementById('drop').innerHTML='<img src="'+ev.target.result+'" alt="Foto do produto"><span class="change">TROCAR FOTO</span>'};r.readAsDataURL(f)});
+function createPrompt(){let name=document.getElementById('productName').value.trim();if(!name){alert('Digite o nome do produto.');return}if(!selectedImage){alert('Envie uma foto do produto.');return}let p=`Crie um vídeo publicitário profissional para o produto "${name}", usando a imagem enviada como referência visual principal.\n\nAnalise visualmente a foto para identificar aparência, categoria, materiais, cores e características que possam ser observadas. Não invente especificações nem benefícios que não estejam confirmados.\n\nCrie automaticamente um conceito criativo, uma descrição visual, um roteiro com cenas, movimentos de câmera, iluminação, trilha e uma chamada final para ação. O resultado deve ter estética premium, ritmo envolvente e qualidade de campanha publicitária para redes sociais. Preserve a identidade visual do produto da foto.`;document.getElementById('prompt').textContent=p;document.getElementById('output').style.display='block';document.getElementById('output').scrollIntoView({behavior:'smooth',block:'nearest'})}
+function copyPrompt(){let t=document.getElementById('prompt').textContent;navigator.clipboard?.writeText(t).then(()=>alert('Briefing copiado!')).catch(()=>alert('Selecione e copie o texto.'))}
+function makeAd(){let n=document.getElementById('adName').value.trim(),p=document.getElementById('adPrice').value.trim();if(!n){alert('Digite o nome do produto.');return}document.getElementById('adText').textContent=`Produto: ${n}\n${p?'Preço: '+p+'\n':''}\nA IA deverá criar uma chamada de impacto, apresentar os benefícios confirmados do produto, desenvolver um roteiro curto para vídeo vertical e finalizar com uma chamada para ação.`;document.getElementById('adOutput').style.display='block'}
 </script>
 </body>
 </html>
